@@ -67,6 +67,11 @@ This project serves as an extension of my previous labs. It leverages the securi
 ## Repository Structure
 
 ```
+|
+├── README.md
+├── requirements.txt
+├── ip-block.py
+└── LICENSE
 ```
 
 * `ip-block.py`: Main script for detection and blocking.
