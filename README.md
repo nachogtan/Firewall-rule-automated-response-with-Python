@@ -81,7 +81,7 @@ Additionally, on the machine where you are running the script, port 587 must be 
 ## Usage
 
 * **Manual Execution:**
-    `[python your_script_name.py]`
+    `ip-block.py`
 * **Automated Execution (Cron Job):**
     * To run the script every 5 minutes, add the following line to your crontab:
     `*/5 * * * * python /path/to/[your_script_name.py]`
