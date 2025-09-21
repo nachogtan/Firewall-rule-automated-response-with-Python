@@ -10,8 +10,10 @@ This repository provides a Python script that automates a security response by p
 * [Features](#features)
 * [Prerequisites](#prerequisites)
 * [Configuration](#configuration)
+* [Workflow](#workflow)
 * [Usage](#usage)
 * [Repository Structure](#repository-structure)
+* [Lesson Learned](#lesson-learned)
 * [Author](#author)
 * [License](#license)
 
@@ -45,13 +47,35 @@ This project serves as an extension of my previous labs. It leverages the securi
 1.  **Install Python dependencies:**
 - `pip install -r requirements.txt`
 2.  Edit the script:
-- Open the main script file ([your_script_name.py]).
-- Locate the variables for the log file path and the VirusTotal API key.
-- Replace the placeholder values with your specific information.
+To keep your credentials secure, this script uses environment variables. Before running, set the following variables in your system's environment:
+- `SPLUNK_HOST`: The hostname or IP address of your Splunk instance.
+- `SPLUNK_PORT`: The Splunk management port (default is `8089`).
+- `SPLUNK_USER`: Your Splunk username.
+- `SPLUNK_PASSWORD`: Your Splunk password.
+- `VIRUSTOTAL_API_KEY`: Your API key from VirusTotal.
+- `SMTP_SERVER`: The SMTP server you'll use (e.g., smtp.gmail.com).
+- `SMTP_PORT`: The port for the SMTP server (e.g., `587`).
+- `SMTP_USER`: Your email address or API key.
+- `SMTP_PASSWORD`: The password or API key for your email account.
+- `SSH_HOST`: The hostname or IP address of the machine you're connecting to via SSH.
+- `SSH_USER`: The username for the SSH connection.
+- `SSH_PASSWORD`: The password for the SSH connection.
 3. Get your API key:
 - Visit [VirusTotal](https://docs.virustotal.com/docs/please-give-me-an-api-key) to get your API key.
 
-   
+Note:
+Ensure that TCP port 8089 allows inbound communication on the Splunk server. This port is needed for the splunk-sdk module to establish a connection as a client and access the Splunk API.
+Additionally, on the machine where you are running the script, port 587 must be open to allow outbound connections to the SMTP server. This is necessary for the script to be able to send notification emails.
+
+---
+
+## Workflow
+
+1. Splunk Connection: The script connects to the Splunk API using the [splunk-sdk](https://dev.splunk.com/enterprise/docs/devtools/python/sdk-python/) and runs a predefined search to find attack logs.
+2. IP Extraction: It analyzes the Splunk results and extracts a list of IP addresses.
+3. VirusTotal Verification: It sends each IP to the VirusTotal API to check if it has a high-risk score.
+4. Automated Response: If an IP is confirmed as malicious, the script creates an iptables rule to block it on the system's firewall.
+5. Notification: It sends an email notification to the administrator with the details of the blocked IPs.
 ---
 
 ## Usage
@@ -76,6 +100,13 @@ This project serves as an extension of my previous labs. It leverages the securi
 
 * `ip-block.py`: Main script for detection and blocking.
 * `requirements.txt`: List of Python libraries needed.
+
+---
+
+## Lesson Learned
+
+This project was a valuable opportunity to gain hands-on experience with automated security responses in a real-world environment. It challenged me to broaden my understanding of REST APIs and their application in security automation.
+By leveraging AI tools to accelerate development, I was able to efficiently debug errors and grasp complex concepts. This allowed me to focus on the core logic and cybersecurity principles, transforming the project into a powerful demonstration of both technical skill and my ability to utilize modern tools for problem-solving.
 
 ---
 
