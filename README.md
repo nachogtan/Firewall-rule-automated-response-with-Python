@@ -42,25 +42,25 @@ This project serves as an extension of my previous labs. It leverages the securi
 
 ## Configuration
 
-1.  **Clone the repository:**
-    `git clone https://docs.github.com/en/repositories/creating-and-managing-repositories/deleting-a-repository`
-2.  **Install Python dependencies:**
-    `pip install -r requirements.txt`
-3.  **Set up your environment variables:**
-    * Create a `.env` file in the project's root directory.
-    * Add your VirusTotal API key: `VIRUSTOTAL_API_KEY=your_api_key_here`
-4.  **Configure Splunk log paths:**
-    * Modify the `config.py` file to specify the exact path to your Splunk logs.
+1.  **Install Python dependencies:**
+- `pip install -r requirements.txt`
+2.  Edit the script:
+- Open the main script file ([your_script_name.py]).
+- Locate the variables for the log file path and the VirusTotal API key.
+- Replace the placeholder values with your specific information.
+3. Get your API key:
+- Visit [VirusTotal](https://docs.virustotal.com/docs/please-give-me-an-api-key) to get your API key.
 
+   
 ---
 
 ## Usage
 
 * **Manual Execution:**
-    `python your_script_name.py`
+    `[python your_script_name.py]`
 * **Automated Execution (Cron Job):**
     * To run the script every 5 minutes, add the following line to your crontab:
-    `*/5 * * * * python /path/to/your_script_name.py`
+    `*/5 * * * * python /path/to/[your_script_name.py]`
 
 ---
 
@@ -69,16 +69,14 @@ This project serves as an extension of my previous labs. It leverages the securi
 ```
 ```
 
-* `your_script_name.py`: Main script for detection and blocking.
+* `ip-block.py`: Main script for detection and blocking.
 * `requirements.txt`: List of Python libraries needed.
-* `config.py`: File for configuration variables.
-* `.env.example`: Example file for environment variables.
 
 ---
 
 ## Author
 
-* **[Tu Nombre]** - [Tu perfil de GitHub](URL de tu perfil)
+[nachogtan](https://github.com/nachogtan)
 
 ---
 
